@@ -14,7 +14,7 @@ Creating a component in one language that can be used by another language is ver
 
 For example, we will create a simple class in C# that exposes two methods: 
 
-```
+```C++
 namespace MyCSClass
 {using System;
 public class CSClass{	public CSClass() { }
@@ -29,7 +29,7 @@ The first method, `MyMethod`, takes a string object and returns its length. The 
 
 To consume this component using managed C++ we need to first import the assembly into our program: 
 
-```
+```C++
 #using "MyCSClass.dll"
 ```
 
@@ -37,7 +37,7 @@ That's it. No typelibs, no .def files, no ATL headers. We simply use the `#using
 
 Once we have imported the class we can then use the `using` declaration to save typing: 
 
-```
+```C++
 using namespace MyCSClass;
 ```
 
@@ -45,7 +45,7 @@ Note the difference here: `#using` is for importing an assembly into your projec
 
 Actually consuming the class is the same as using any other managed reference type in .NET: 
 
-```
+```C++
 CSClass *cs = new CSClass();
 
 int result;
@@ -61,7 +61,7 @@ Imagine you have bought, or otherwise acquired some super-cool component that yo
 
 Back to our example. The method `CSClass::MyVirtualMethod` is virtual, so let's declare a new C++ class that is derived from this C# class, and override that virtual method 
 
-```
+```C++
 __gc class CPPClass : public MyCSClass::CSClass
 {
 public:// returns the cube of the given numbervirtual int MyVirtualMethod(int n){	return n*n*n;}
@@ -70,7 +70,7 @@ public:// returns the cube of the given numbervirtual int MyVirtualMethod(int n)
 
 We have overridden `CSClass::MyVirtualMethod` with our new method that returns the cube, not the square, of the given number. Once we compile the code we we have a new C++ component that overrides the virtual method in the C# class, and also has the non-virtual `MyMethod()` function. 
 
-```
+```C++
 CPPClass *cpp = new CPPClass();
 
 int result;
