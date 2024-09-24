@@ -79,7 +79,12 @@ Back to our example. The method `CSClass::MyVirtualMethod` is virtual, so let's 
 ```C++
 __gc class CPPClass : public MyCSClass::CSClass
 {
-public:// returns the cube of the given numbervirtual int MyVirtualMethod(int n){	return n*n*n;}
+	public:
+		// returns the cube of the given number
+		virtual int MyVirtualMethod(int n)
+		{
+			return n*n*n;
+		}
 };
 ```
 
