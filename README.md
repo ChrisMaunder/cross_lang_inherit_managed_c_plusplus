@@ -16,10 +16,25 @@ For example, we will create a simple class in C# that exposes two methods:
 
 ```C++
 namespace MyCSClass
-{using System;
-public class CSClass{	public CSClass() { }
-	// returns the length of the passed string	public int MyMethod(string str)	{		return str.Length;	}
-	// returns n squared	virtual public int MyVirtualMethod(int n)	{		return n*n;	}}
+{
+	using System;
+
+	public class CSClass
+	{
+		public CSClass() { }
+	
+		// returns the length of the passed string
+		public int MyMethod(string str)
+	        {
+			return str.Length;
+		}
+	
+		// returns n squared
+		virtual public int MyVirtualMethod(int n)
+		{
+			return n*n;
+		}
+	}
 }
 ```
 
